@@ -1,23 +1,23 @@
 // Get current day
-let displayCurrentDay = moment().format("MMMM Do YYYY"); 
+let displayCurrentDay = moment().format("MMMM Do YYYY");
 console.log(displayCurrentDay);
 
 // Get present hour
-let presentHour = moment().format("ha"); 
+let presentHour = moment().format("ha");
 console.log(presentHour);
 
 // Create hours array
 const businessHours = [
-    "9am",
-    "10am",
-    "11am",
-    "12pm",
-    "1pm",
-    "2pm",
-    "3pm",
-    "4pm",
-    "5pm",
-  ];
+  "9am",
+  "10am",
+  "11am",
+  "12pm",
+  "1pm",
+  "2pm",
+  "3pm",
+  "4pm",
+  "5pm",
+];
 
 // Initiate function on page load
 $(function () {
@@ -26,7 +26,7 @@ $(function () {
   // buttonStatus();
 });
 
-// Create time blocks using array item length based on time of day - USING JQUERY EACH
+// Create time blocks using array item length based on time of day - refactored for JQUERY each method
 function createBlocks() {
   $(businessHours).each(function () {
     $("<div>", { class: "row time-block" })
@@ -41,24 +41,37 @@ function createBlocks() {
       )
       .appendTo(".container");
   });
-  // Set time block colours based on present hour
+  // Set time block colours based on present hour and business hour conditional statements
   $("textarea").each(function () {
-    const hourStatus = this.id;
-    if (hourStatus < presentHour) {
+   // const hourStatus = this.id;
+    if (this.id < presentHour) {
       $(this).addClass("past");
-    } else if (hourStatus === presentHour) {
+    } else if (this.id === presentHour) {
       $(this).addClass("present");
-    } else if (hourStatus > presentHour) {
+    } else {
       $(this).addClass("future");
     }
   });
 }
+// Set event listener on button click, get value and id and send to local storage
+$(document).ready(function () {
+  $(".saveBtn").on("click", function (event) {
+    console.log("clicked");
+    event.preventDefault();
+    let userEvent = $(this).siblings("textarea").val();
+    let timeId = $(this).siblings("textarea").attr("id");
+  //  localStorage.setItem("userEvent", userEvent);
+  //  localStorage.setItem("hour", timeId);
+  });
+});
 
-// Get user event input on submit
+
 // Store user event input to local storage
-// Get user event input from local storage - load on refresh
 
-// Set time block colours based on time of day - USING FOR LOOP
+
+// Get user event input from local storage - load on refresh and move to initiate folder
+
+
 
 
 
