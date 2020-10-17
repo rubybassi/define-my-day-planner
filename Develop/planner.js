@@ -1,13 +1,11 @@
 // Initiate function on page load
 $(function(){
     createBlocks();
-    // Display current day
-    let displayCurrentDay = moment().format('MMMM Do YYYY');
+    let displayCurrentDay = moment().format('MMMM Do YYYY'); // Display current day
     $('#currentDay').text(displayCurrentDay);
 })
 
 // Create time blocks - used businessHours array for total blocks and hour
-// Time array 
 const businessHours = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm",
 "5pm"];
 function createBlocks() {
