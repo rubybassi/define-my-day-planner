@@ -33,7 +33,7 @@ function createBlocks() {
           .attr("id", this)
           .append(),
         $("<button>", { class: "col-1 saveBtn" }).append(
-          $("<i>", { class: "far fa-save" })
+          $("<i>", { class: "far fa-save fa-2x" })
         )
       )
       .appendTo(".container");
