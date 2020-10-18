@@ -19,13 +19,6 @@ const businessHours = [
   "5pm",
 ];
 
-// Renders page on load
-$(function () {
-  createBlocks();
-  $("#currentDay").text(displayCurrentDay);
-  getEvents();
-});
-
 // Create time blocks looping through businessHours array - refactored for JQUERY each method
 function createBlocks() {
   $(businessHours).each(function () {
@@ -54,28 +47,34 @@ function createBlocks() {
   });
 }
 
+// create array to hold user event objects
+let eventsArray = [];
+
 // Get user event from local storage
 function getEvents() {
   let retrievedArray = JSON.parse(localStorage.getItem("events"));
  // console.log(retrievedArray);
+ if (retrievedArray !== null) eventsArray = retrievedArray;
   $(retrievedArray).each(function () {
     $("textarea#" + this.hour).val(this.event);
   });
 }
 
-// create array to hold user event objects
-let eventsArray = [];
 
 // Store user event to local storage
 function sendEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArray));
+
 }
 
 // Set event listener on all button clicks, get text value and id, and call sendEvents function
 $(function () {
-  $(".saveBtn").on("click", function (event) {
+  createBlocks();
+  $("#currentDay").text(displayCurrentDay);
+  getEvents();
+  $(".saveBtn").on("click", function () {
     // console.log("clicked");
-    event.preventDefault();
+   // event.preventDefault();
     let userHour = $(this).siblings("textarea").attr("id");
     let userEvent = $(this).siblings("textarea").val();
 
