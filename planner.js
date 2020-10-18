@@ -2,21 +2,25 @@
 let displayCurrentDay = moment().format("MMMM Do YYYY");
 //console.log(displayCurrentDay);
 
-// Get present hour using hour fromat that matches the businessHours format
-let presentHour = moment().format("ha");
+// Get present hour using hour that matches the businessHours format
+// Update: parsed to integer so can use math operators for conditional statements 
+let presentHour = moment().format("HH");
 console.log(presentHour);
+let parsedhour = parseInt(presentHour);
+console.log(parsedhour);
 
 // Create hours array to be used as dynamic ids
+// Update: changed to integer so can use math operators for conditional statements 
 const businessHours = [
-  "9am",
-  "10am",
-  "11am",
-  "12pm",
-  "1pm",
-  "2pm",
-  "3pm",
-  "4pm",
-  "5pm",
+  09,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
 ];
 
 // Create time blocks looping through businessHours array - refactored for JQUERY each method
@@ -37,11 +41,11 @@ function createBlocks() {
 
   // Set time block colours based on present hour and business hour conditional statements
   $("textarea").each(function () {
-    if (this.id < presentHour) {
+    if (this.id < parsedhour) {
       $(this).addClass("past");
-    } else if (this.id === presentHour) {
+    } else if (this.id == parsedhour) {
       $(this).addClass("present");
-    } else {
+    } else if (this.id > parsedhour) {
       $(this).addClass("future");
     }
   });
@@ -59,7 +63,6 @@ function getEvents() {
     $("textarea#" + this.hour).val(this.event);
   });
 }
-
 
 // Store user event to local storage
 function sendEvents() {
