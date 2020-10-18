@@ -87,27 +87,9 @@ function sendEvents(){
 
 // Get user event from local storage
 function getEvents(){
-  let retrievedEvents = JSON.parse(localStorage.getItem("events"));
-  $(retrievedEvents).each(function(){
-    $("textarea").val(this.event);
-
-  })
-  
-  //overrideEvent(retrieveEvent);
-  //if (retrieveEvent !=== [])
- // return retrievedEvents;
-}
-
-/*
-//Update storage task
-function overrideEvent(newArray){
-  $(eventArray).each(function(){
-    if (this.hour === ("textarea").attr("id")){
-      eventArray.splice(this.hour, 1);
-      console.log("match");
-    } else {
-      eventArray = this.hour;
-    }
+  let retrievedArray = JSON.parse(localStorage.getItem("events"));
+  console.log(retrievedArray);
+  $(retrievedArray).each(function(){
+    $("textarea#"+this.hour).val(this.event);
   })
 }
-*/
