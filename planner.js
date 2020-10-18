@@ -1,12 +1,12 @@
 // Get current day
 let displayCurrentDay = moment().format("MMMM Do YYYY");
-console.log(displayCurrentDay);
+//console.log(displayCurrentDay);
 
-// Get present hour
+// Get present hour using hour fromat that matches the businessHours format
 let presentHour = moment().format("ha");
 console.log(presentHour);
 
-// Create hours array
+// Create hours array to be used as dynamic ids
 const businessHours = [
   "9am",
   "10am",
@@ -19,7 +19,7 @@ const businessHours = [
   "5pm",
 ];
 
-// Initiate function on page load
+// Renders page on load
 $(function () {
   createBlocks();
   $("#currentDay").text(displayCurrentDay);
@@ -44,7 +44,6 @@ function createBlocks() {
 
   // Set time block colours based on present hour and business hour conditional statements
   $("textarea").each(function () {
-    // const hourStatus = this.id;
     if (this.id < presentHour) {
       $(this).addClass("past");
     } else if (this.id === presentHour) {
@@ -55,41 +54,39 @@ function createBlocks() {
   });
 }
 
+// Get user event from local storage
+function getEvents() {
+  let retrievedArray = JSON.parse(localStorage.getItem("events"));
+ // console.log(retrievedArray);
+  $(retrievedArray).each(function () {
+    $("textarea#" + this.hour).val(this.event);
+  });
+}
+
 // create array to hold user event objects
 let eventsArray = [];
+
+// Store user event to local storage
+function sendEvents() {
+  localStorage.setItem("events", JSON.stringify(eventsArray));
+}
 
 // Set event listener on all button clicks, get text value and id, and call sendEvents function
 $(function () {
   $(".saveBtn").on("click", function (event) {
     // console.log("clicked");
-    event.preventDefault(); 
+    event.preventDefault();
     let userHour = $(this).siblings("textarea").attr("id");
     let userEvent = $(this).siblings("textarea").val();
 
-   // localStorage.setItem(userHour, userEvent);
     // add item to object
     let calendarEvent = {
-       hour: userHour,
-       event: userEvent,
-  };
-  // add object to array
+      hour: userHour,
+      event: userEvent,
+    };
+    // add object to array
     eventsArray.push(calendarEvent);
-  // call sendEvents to local storage function
+    // call sendEvents to local storage function
     sendEvents();
+  });
 });
-});
-
-
-// Store user event to local storage
-function sendEvents(){
-  localStorage.setItem("events", JSON.stringify(eventsArray));
-}
-
-// Get user event from local storage
-function getEvents(){
-  let retrievedArray = JSON.parse(localStorage.getItem("events"));
-  console.log(retrievedArray);
-  $(retrievedArray).each(function(){
-    $("textarea#"+this.hour).val(this.event);
-  })
-}
