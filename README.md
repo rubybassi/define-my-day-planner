@@ -46,7 +46,7 @@ If you have feedback, please feel free to drop me a comment.
 
 The following image was provided to demonstrate what the web application's layout should resemble, although there was room for customisation:
 
-[![Demo]((https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)](https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)
+[![Demo](https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)](https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)
 
 ### My Development Enviromment:
 * [Visual Studio Code](https://code.visualstudio.com/)
