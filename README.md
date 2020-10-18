@@ -14,6 +14,8 @@ Comments were added throughout the Javascript file, highlighting the key coding 
 
 [View my final project on GitHub pages](https://rubybassi.github.io/define-my-day-planner/)
 
+![Demo](assets/jquery-planner.png)
+
 ![Untitled_ Oct 18, 2020 11_04 PM](https://user-images.githubusercontent.com/25780327/96386952-b8e95c80-1196-11eb-9fa7-0f99da824eca.gif)
 
 If you have feedback, please feel free to drop me a comment.
