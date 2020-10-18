@@ -23,10 +23,10 @@ const businessHours = [
 $(function () {
   createBlocks();
   $("#currentDay").text(displayCurrentDay);
-  // buttonStatus();
+  getEvents();
 });
 
-// Create time blocks using array item length based on time of day - refactored for JQUERY each method
+// Create time blocks looping through businessHours array - refactored for JQUERY each method
 function createBlocks() {
   $(businessHours).each(function () {
     $("<div>", { class: "row time-block" })
@@ -41,9 +41,10 @@ function createBlocks() {
       )
       .appendTo(".container");
   });
+
   // Set time block colours based on present hour and business hour conditional statements
   $("textarea").each(function () {
-   // const hourStatus = this.id;
+    // const hourStatus = this.id;
     if (this.id < presentHour) {
       $(this).addClass("past");
     } else if (this.id === presentHour) {
@@ -53,41 +54,60 @@ function createBlocks() {
     }
   });
 }
-// Set event listener on button click, get value and id and send to local storage
-$(document).ready(function () {
+
+// create array to hold user event objects
+let eventsArray = [];
+
+// Set event listener on all button clicks, get text value and id, and call sendEvents function
+$(function () {
   $(".saveBtn").on("click", function (event) {
-    console.log("clicked");
-    event.preventDefault();
+    // console.log("clicked");
+    event.preventDefault(); 
+    let userHour = $(this).siblings("textarea").attr("id");
     let userEvent = $(this).siblings("textarea").val();
-    let timeId = $(this).siblings("textarea").attr("id");
-  //  localStorage.setItem("userEvent", userEvent);
-  //  localStorage.setItem("hour", timeId);
-  });
+
+   // localStorage.setItem(userHour, userEvent);
+    // add item to object
+    let calendarEvent = {
+       hour: userHour,
+       event: userEvent,
+  };
+  // add object to array
+    eventsArray.push(calendarEvent);
+  // call sendEvents to local storage function
+    sendEvents();
+});
 });
 
 
-// Store user event input to local storage
+// Store user event to local storage
+function sendEvents(){
+  localStorage.setItem("events", JSON.stringify(eventsArray));
+}
 
+// Get user event from local storage
+function getEvents(){
+  let retrievedEvents = JSON.parse(localStorage.getItem("events"));
+  $(retrievedEvents).each(function(){
+    $("textarea").val(this.event);
 
-// Get user event input from local storage - load on refresh and move to initiate folder
+  })
+  
+  //overrideEvent(retrieveEvent);
+  //if (retrieveEvent !=== [])
+ // return retrievedEvents;
+}
 
-
-
-
-
-// Create block with for loop
 /*
-function createBlocks() {
-  for (i = 0; i < businessHours.length; i++) {
-    $("<div>", { class: "row time-block" })
-      .append(
-        $("<div>", { class: "col-1 hour" }).text(businessHours[i]).append(),
-        $("<textarea>", { class: "col-10 description" }).attr("id", businessHours[i]).append(),
-        $("<button>", { class: "col-1 saveBtn" }).append(
-          $("<i>", { class: "far fa-save" })
-        )
-      )
-      .appendTo(".container");
-  }
+//Update storage task
+function overrideEvent(newArray){
+  $(eventArray).each(function(){
+    if (this.hour === ("textarea").attr("id")){
+      eventArray.splice(this.hour, 1);
+      console.log("match");
+    } else {
+      eventArray = this.hour;
+    }
+  })
 }
 */
