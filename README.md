@@ -16,10 +16,6 @@ Comments were added throughout the Javascript file, highlighting the key coding 
 
 ![Untitled_ Oct 18, 2020 11_04 PM](https://user-images.githubusercontent.com/25780327/96386952-b8e95c80-1196-11eb-9fa7-0f99da824eca.gif)
 
-![Define My Day Planner](img/)
-
-[![Demo](https://j.gifs.com/E8jmPl.gif)](https://www.youtube.com/watch?v=Z2ia15zoDkI&feature=youtu.be)
-
 If you have feedback, please feel free to drop me a comment.
 
 ### User Story
@@ -48,7 +44,7 @@ If you have feedback, please feel free to drop me a comment.
 
 The following image was provided to demonstrate what the web application's layout should resemble, although there was room for customisation:
 
-[![Demo](https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)](https://birmingham.bootcampcontent.com/university-of-birmingham/ubhm-brm-fsf-pt-09-2020-u-c/raw/master/05-Third-Party-APIs/02-Homework/Assets/05-third-party-apis-homework-demo.gif)
+![Demo](assets/demo.png)
 
 ### My Development Enviromment:
 * [Visual Studio Code](https://code.visualstudio.com/)
